@@ -5,66 +5,16 @@
 void simulateKeyInput(char);
 void simulateKeyInput(char, char);
 bool getTextFromClipboard(std::stringbuf & buffer);
+LRESULT CALLBACK KeyboardProc(int, WPARAM, LPARAM);
+void work();
 int main(int argc, char ** argv) {
-    int cmd;
-    while (1) {
-        std::cout << "Enter 1 to work, 0 to stop:\n";
-        std::cin >> cmd;
-        if (cmd == 0) break;
-        if (cmd != 1) continue;
-        std::cout << "wait for a while..." << std::endl;
-        Sleep(1000);
-        // std::fstream fin;
-        std::stringbuf buf;
-        getTextFromClipboard(buf);
-        std::istream in(&buf);
-        std::string buffer;
-        bool flag = false;
-        // in.open("res/pastehere.txt");
-        while (std::getline(in, buffer)) {
-            if (buffer.size() == 0) continue;
-            size_t i = 0;
-            if (flag) {
-                while (buffer[i] == ' ') i++;
-                if (!i) {
-                    simulateKeyInput(VK_BACK); 
-                    flag = false;
-                }
-            }
-            for (; i < buffer.length(); i++) {
-                char it = buffer[i];
-                if (islower(it)) simulateKeyInput(it - 32);
-                else if (isupper(it)) simulateKeyInput(VK_SHIFT, it);
-                else if (isdigit(it)) simulateKeyInput(it);
-                else if (it == '\\') simulateKeyInput(220);
-                else if (it == '\'') simulateKeyInput(222);
-                else if (it == '\"') simulateKeyInput(VK_SHIFT, 222);
-                else if (it == ':') {
-                    simulateKeyInput(VK_SHIFT, 186);
-                    flag = true;
-                }
-                else if (it == '(') simulateKeyInput(VK_SHIFT, '9');
-                else if (it == ')') simulateKeyInput(VK_SHIFT, '0');
-                else if (it == '[') simulateKeyInput(219);
-                else if (it == ']') simulateKeyInput(221);
-                else if (it == '{') simulateKeyInput(VK_SHIFT, 219);
-                else if (it == '}') simulateKeyInput(VK_SHIFT, 221);
-                else if (it == ' ') simulateKeyInput(VK_SPACE);
-                else if (it == '=') simulateKeyInput(187);
-                else if (it == '+') simulateKeyInput(VK_SHIFT, 187);
-                else if (it == '-') simulateKeyInput(189);
-                else if (it == '_') simulateKeyInput(VK_SHIFT, 189);
-                else if (it == '*') simulateKeyInput(VK_SHIFT, '8');
-                else if (it == '/') simulateKeyInput(191);
-                else if (it == ',') simulateKeyInput(188);
-                else if (it == '.') simulateKeyInput(190);
-                else if (it == '!') simulateKeyInput(VK_SHIFT, '1');
-                else if (it == '%') simulateKeyInput(VK_SHIFT, '5');
-            }
-            simulateKeyInput(VK_RETURN); // simulate enter
-        }
+    HHOOK hKeyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0);
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
-    // fin.close();
+    UnhookWindowsHookEx(hKeyboardHook);
     return 0;
 }
 void simulateKeyInput(char key) {
@@ -93,4 +43,69 @@ bool getTextFromClipboard(std::stringbuf & buffer) {
         return true;
     }
     return false;
+}
+LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
+    if (nCode == HC_ACTION) {
+        KBDLLHOOKSTRUCT * pKeyboardStruct = (KBDLLHOOKSTRUCT*) lParam;
+        /*
+        if (wParam == WM_KEYDOWN) { // press
+            int keyCode = pKeyboardStruct->vkCode;
+        }
+        */
+        if (wParam == WM_KEYUP) { // release
+            int keyCode = pKeyboardStruct->vkCode;
+            if (keyCode == VK_F9) exit(0);
+            else if (keyCode == VK_F8) work();
+        }
+    }
+    return CallNextHookEx(NULL, nCode, wParam, lParam);
+}
+void work() {
+    std::stringbuf buf;
+    getTextFromClipboard(buf);
+    std::istream in(&buf);
+    std::string buffer;
+    bool flag = false;
+    while (std::getline(in, buffer)) {
+        if (buffer.size() == 0) continue;
+        size_t i = 0;
+        if (flag) {
+            while (buffer[i] == ' ') i++;
+            if (!i) {
+                simulateKeyInput(VK_BACK); 
+                flag = false;
+            }
+        }
+        for (; i < buffer.length(); i++) {
+            char it = buffer[i];
+            if (islower(it)) simulateKeyInput(it - 32);
+            else if (isupper(it)) simulateKeyInput(VK_SHIFT, it);
+            else if (isdigit(it)) simulateKeyInput(it);
+            else if (it == '\\') simulateKeyInput(220);
+            else if (it == '\'') simulateKeyInput(222);
+            else if (it == '\"') simulateKeyInput(VK_SHIFT, 222);
+            else if (it == ':') {
+                simulateKeyInput(VK_SHIFT, 186);
+                flag = true;
+            }
+            else if (it == '(') simulateKeyInput(VK_SHIFT, '9');
+            else if (it == ')') simulateKeyInput(VK_SHIFT, '0');
+            else if (it == '[') simulateKeyInput(219);
+            else if (it == ']') simulateKeyInput(221);
+            else if (it == '{') simulateKeyInput(VK_SHIFT, 219);
+            else if (it == '}') simulateKeyInput(VK_SHIFT, 221);
+            else if (it == ' ') simulateKeyInput(VK_SPACE);
+            else if (it == '=') simulateKeyInput(187);
+            else if (it == '+') simulateKeyInput(VK_SHIFT, 187);
+            else if (it == '-') simulateKeyInput(189);
+            else if (it == '_') simulateKeyInput(VK_SHIFT, 189);
+            else if (it == '*') simulateKeyInput(VK_SHIFT, '8');
+            else if (it == '/') simulateKeyInput(191);
+            else if (it == ',') simulateKeyInput(188);
+            else if (it == '.') simulateKeyInput(190);
+            else if (it == '!') simulateKeyInput(VK_SHIFT, '1');
+            else if (it == '%') simulateKeyInput(VK_SHIFT, '5');
+        }
+        simulateKeyInput(VK_RETURN); // simulate enter
+    }
 }
