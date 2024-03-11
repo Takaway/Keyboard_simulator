@@ -20,14 +20,14 @@ int main(int argc, char ** argv) {
 void simulateKeyInput(char key) {
     keybd_event(key, 0, 0, 0);
     keybd_event(key, 0, KEYEVENTF_KEYUP, 0);
-    Sleep(40);
+    Sleep(20);
 }
 void simulateKeyInput(char key1, char key2) {
     keybd_event(key1, 0, 0, 0);
     keybd_event(key2, 0, 0, 0);
     keybd_event(key1, 0, KEYEVENTF_KEYUP, 0);
     keybd_event(key2, 0, KEYEVENTF_KEYUP, 0);
-    Sleep(40);
+    Sleep(20);
 }
 bool getTextFromClipboard(std::stringbuf & buffer) {
     if (OpenClipboard(NULL)) {
@@ -102,9 +102,12 @@ void work() {
             else if (it == '*') simulateKeyInput(VK_SHIFT, '8');
             else if (it == '/') simulateKeyInput(191);
             else if (it == ',') simulateKeyInput(188);
+            else if (it == '<') simulateKeyInput(VK_SHIFT, 188);
             else if (it == '.') simulateKeyInput(190);
+            else if (it == '>') simulateKeyInput(VK_SHIFT, 190);
             else if (it == '!') simulateKeyInput(VK_SHIFT, '1');
             else if (it == '%') simulateKeyInput(VK_SHIFT, '5');
+            else if (it == '#') simulateKeyInput(VK_SHIFT, '3');
         }
         simulateKeyInput(VK_RETURN); // simulate enter
     }
