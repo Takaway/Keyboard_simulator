@@ -56,7 +56,7 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator\src
+CMAKE_SOURCE_DIR = C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator\build
@@ -116,6 +116,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named keysim
+
+# Build rule for target.
+keysim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 keysim
+.PHONY : keysim
+
+# fast build rule for target.
+keysim/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/build
+.PHONY : keysim/fast
+
+#=============================================================================
 # Target rules for targets named Keyboard_Simulator
 
 # Build rule for target.
@@ -128,29 +141,32 @@ Keyboard_Simulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/build
 .PHONY : Keyboard_Simulator/fast
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+src/main.obj: src/main.cpp.obj
+.PHONY : src/main.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+src/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -161,9 +177,10 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Keyboard_Simulator
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... keysim
+	@echo ... src/main.obj
+	@echo ... src/main.i
+	@echo ... src/main.s
 .PHONY : help
 
 

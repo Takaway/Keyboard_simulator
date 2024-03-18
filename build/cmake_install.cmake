@@ -1,4 +1,4 @@
-# Install script for directory: C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/src
+# Install script for directory: C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

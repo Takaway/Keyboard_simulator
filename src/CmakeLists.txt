@@ -1,3 +1,0 @@
-cmake_minimum_required(VERSION 3.10)
-project(Keyboard_Simulator)
-add_executable(Keyboard_Simulator main.cpp)

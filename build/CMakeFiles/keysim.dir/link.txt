@@ -1,0 +1,2 @@
+C:\Ajisai\Dependency\MSYS2\mingw64\bin\ar.exe qc libkeysim.a CMakeFiles/keysim.dir/src/main.cpp.obj
+C:\Ajisai\Dependency\MSYS2\mingw64\bin\ranlib.exe libkeysim.a

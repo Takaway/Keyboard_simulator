@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Keyboard_Simulator.dir/main.cpp.obj"
-  "CMakeFiles/Keyboard_Simulator.dir/main.cpp.obj.d"
-  "Keyboard_Simulator.exe"
-  "Keyboard_Simulator.exe.manifest"
-  "Keyboard_Simulator.pdb"
+  "C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/bin/Keyboard_Simulator.exe"
+  "C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/bin/Keyboard_Simulator.exe.manifest"
+  "C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/bin/Keyboard_Simulator.pdb"
+  "CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.obj"
+  "CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.obj.d"
   "libKeyboard_Simulator.dll.a"
 )
 

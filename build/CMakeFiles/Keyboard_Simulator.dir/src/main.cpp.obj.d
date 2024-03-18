@@ -1,4 +1,4 @@
-CMakeFiles/Keyboard_Simulator.dir/main.cpp.obj: \
+CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.obj: \
  C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator\src\main.cpp \
  C:/Ajisai/Dependency/MSYS2/mingw64/include/c++/12.2.0/iostream \
  C:/Ajisai/Dependency/MSYS2/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h \

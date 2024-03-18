@@ -246,7 +246,7 @@ Keyboard_Simulator_BINARY_DIR:STATIC=C:/Ajisai/Workspace/Development/C_CPP/Keybo
 Keyboard_Simulator_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-Keyboard_Simulator_SOURCE_DIR:STATIC=C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/src
+Keyboard_Simulator_SOURCE_DIR:STATIC=C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator
 
 
 ########################
@@ -337,7 +337,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/src
+CMAKE_HOME_DIRECTORY:INTERNAL=C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
