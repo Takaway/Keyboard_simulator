@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libkeysim.a"
+  "C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/lib/libkeysim.a"
 )

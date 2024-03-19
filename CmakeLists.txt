@@ -6,16 +6,18 @@ set(SRC
     ${PROJECT_SOURCE_DIR}/src/main.cpp
 )
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
-
-set(LIB_NAME keysim)
-
-add_library(${LIB_NAME} STATIC ${SRC})
-
-target_link_libraries(${LIB_NAME})
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-add_executable(${PROJECT_NAME} ${SRC})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
-target_link_libraries(${PROJECT_NAME} ${LIB_NAME})
+add_library(keysim STATIC ${SRC})
+
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC}
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}
+    keysim
+)
