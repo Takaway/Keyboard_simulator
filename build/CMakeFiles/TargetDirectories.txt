@@ -1,4 +1,3 @@
-C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/build/CMakeFiles/keysim.dir
 C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/build/CMakeFiles/Keyboard_Simulator.dir
 C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/build/CMakeFiles/edit_cache.dir
 C:/Ajisai/Workspace/Development/C_CPP/Keyboard_simulator/build/CMakeFiles/rebuild_cache.dir

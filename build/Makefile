@@ -116,19 +116,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named keysim
-
-# Build rule for target.
-keysim: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 keysim
-.PHONY : keysim
-
-# fast build rule for target.
-keysim/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/build
-.PHONY : keysim/fast
-
-#=============================================================================
 # Target rules for targets named Keyboard_Simulator
 
 # Build rule for target.
@@ -146,7 +133,6 @@ src/main.obj: src/main.cpp.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
@@ -155,7 +141,6 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
@@ -164,7 +149,6 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\keysim.dir\build.make CMakeFiles/keysim.dir/src/main.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard_Simulator.dir\build.make CMakeFiles/Keyboard_Simulator.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
@@ -177,7 +161,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Keyboard_Simulator
-	@echo ... keysim
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

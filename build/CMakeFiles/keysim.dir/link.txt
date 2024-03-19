@@ -1,2 +1,0 @@
-C:\Ajisai\Dependency\MSYS2\mingw64\bin\ar.exe qc C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator\lib\libkeysim.a CMakeFiles/keysim.dir/src/main.cpp.obj
-C:\Ajisai\Dependency\MSYS2\mingw64\bin\ranlib.exe C:\Ajisai\Workspace\Development\C_CPP\Keyboard_simulator\lib\libkeysim.a
