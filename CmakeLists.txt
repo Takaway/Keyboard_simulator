@@ -13,11 +13,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 add_library(keysim STATIC ${SRC})
 
 add_executable(
-    ${PROJECT_NAME}
-    ${SRC}
+    ${PROJECT_NAME} ${SRC}
 )
 
 target_link_libraries(
-    ${PROJECT_NAME}
-    keysim
+    ${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/lib/libkeysim.a
 )
